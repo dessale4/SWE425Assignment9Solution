@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/main-layout}">
+<head>
+<meta charset="UTF-8">
+<title>eRegister - Update Form</title>
+</head>
+<body>
+
+	<div class="container" layout:fragment="content">
+		<h1>Student Update Form</h1>
+		
+		<hr />
+		<!-- th:action="@{/students/update/{id}(id=${student.id})}" -->
+		<form action"#" th:action="@{/students/edit/{id}(id=${student.studentId})}" th:object="${student}"
+			method="post">
+			<div class="form-group row">
+				<label for="studentNumber" class="col-sm-2 col-form-label">Student
+					Number</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" id="studentNumber"
+						name="studentNumber" th:value = "${student.studentNumber}">
+					<!-- <span th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}" class="text-danger"></span> -->
+					<!-- <input type="text" th:field="*{name}">
+					<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+                            Error</td> -->
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="FirstName" class="col-sm-2 col-form-label">FirstName</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="FirstName"
+						name="FirstName" th:value = "${student.FirstName}">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="MiddleName" class="col-sm-2 col-form-label">MiddleName</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="MiddleName"
+						name="MiddleName" th:value = "${student.MiddleName}">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="LastName" class="col-sm-2 col-form-label">LastName</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="LastName"
+						name="LastName" th:value = "${student.LastName}">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="cgpa" class="col-sm-2 col-form-label">cgpa</label>
+				<div class="col-sm-10">
+					<input type="number" step="0.1" class="form-control" id="cgpa"
+						name="cgpa" th:value = "${student.cgpa}">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="enrollmentDate" class="col-sm-2 col-form-label">enrollmentDate</label>
+				<div class="col-sm-10">
+					<input type="date" class="form-control" id="enrollmentDate"
+						name="enrollmentDate" th:value = "${student.enrollmentDate}">
+				</div>
+			</div>
+			<fieldset class="form-group">
+				<legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+				<div class="row">
+					<div class="col-sm-10">
+						<div class="form-check">
+							<input class="form-check-input" type="radio"
+								name="isInternational" id="gridRadios1" value=true> <label
+								class="form-check-label" for="gridRadios1"> True </label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio"
+								name="isInternational" id="gridRadios2" value=false> <label
+								class="form-check-label" for="gridRadios2"> False </label>
+						</div>
+
+					</div>
+				</div>
+			</fieldset>
+			<!-- <div class="form-group row">
+				<div class="col-sm-2">Checkbox</div>
+				<div class="col-sm-10">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="gridCheck1">
+						<label class="form-check-label" for="gridCheck1"> Example
+							checkbox </label>
+					</div>
+				</div>
+			</div> -->
+			<div class="form-group row">
+				<div class="col-sm-10">
+					<button type="submit" class="btn btn-primary">Sign in</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

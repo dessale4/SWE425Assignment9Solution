@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/main-layout}">
+<head>
+<meta charset="ISO-8859-1">
+<title>eRegisterForm</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<h1>List of all students</h1>
+		<hr />
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">StudentId</th>
+					<th scope="col">StudentNumber</th>
+					<th scope="col">FirstName</th>
+					<th scope="col">MiddleName</th>
+					<th scope="col">LastName</th>
+					<th scope="col">CGPA</th>
+					<th scope="col">EnrollmentDate</th>
+					<th scope="col">isInternational</th>
+					<th scope="col">&nbsp</th>
+					<th scope="col">&nbsp</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student, iter : ${students}">
+                        <th scope="row" th:text="${student.studentId}"></th>
+                        <td th:text="${student.studentNumber}"></td>
+                        <td th:text="${student.FirstName}"></td>
+                        <td th:text="${student.MiddleName}"></td>
+                        <td th:text="${student.LastName}"></td>
+                        <td th:text="${student.cgpa}"></td>
+                        <td th:text="${student.enrollmentDate}"></td>
+                        <td th:text="${student.isInternational}"></td>
+                        <td class = "btn-primary"><a th:href="@{/students/edit/{id}(id=${student.studentId})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i>Edit</a></td><!-- th:href="@{/students/delete/{id}(id=${student.id})}"  -->
+                        <!-- <td class = "btn-danger"><a th:href="@{/students/delete/{id}(id=${student.studentId})}">Delete</a></td> -->
+                        <td class = "btn-danger"><a th:href="@{/students/delete/{id}(id=${student.studentId})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i>Delete</a></td> 
+                    </tr>
+                    <tr th:if="${studentCount < 1}">
+                        <td colspan="6" style="text-align: center;">No Books available</td>
+                    </tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>
