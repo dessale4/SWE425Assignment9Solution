@@ -15,6 +15,9 @@
 		<!-- th:action="@{/students/update/{id}(id=${student.id})}" -->
 		<form action"#" th:action="@{/students/edit/{id}(id=${student.studentId})}" th:object="${student}"
 			method="post">
+			
+			<input type="hidden" class="form-control" id="studentId" name="studentId" th:value = "${student.studentId}">
+						
 			<div class="form-group row">
 				<label for="studentNumber" class="col-sm-2 col-form-label">Student
 					Number</label>

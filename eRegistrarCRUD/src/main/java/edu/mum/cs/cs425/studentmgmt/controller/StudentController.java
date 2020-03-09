@@ -28,7 +28,8 @@ public class StudentController {
 	StudentService studentService;
 	
 	@GetMapping("/new")
-	public String getStudentRegistrationForm() {
+	public String getStudentRegistrationForm(Model model) {
+		model.addAttribute("student", new Student());
 		return "student/new";
 	}
 	@PostMapping("")
@@ -57,12 +58,14 @@ public class StudentController {
 		
 		return "student/edit";
 	}
-	@PutMapping("/edit/{id}")
+	@PostMapping("/edit/{id}")
 	public String updateStudent(@PathVariable("id") Long id, @Valid @ModelAttribute Student student, Model model) {
+		Student stu = studentService.getStudent(id);
+//		stu.setFirstName();
 		studentService.save(student);
 		return "redirect:/students";
 	}
-	@PostMapping("/delete/{id}")
+	@GetMapping("/delete/{id}")
 	public String deleteStudent(@PathVariable("id") Long id) {
 		System.out.println("From delete method");
 		studentService.delete(id);
