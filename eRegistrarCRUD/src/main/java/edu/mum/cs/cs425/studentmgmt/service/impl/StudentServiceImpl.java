@@ -39,10 +39,10 @@ public class StudentServiceImpl implements StudentService{
 		return studentRepository.getOne(id);
 	}
 
-	@Override
-	public void updateStudent(Student student, Long id) {
-		studentRepository
-		
-	}
+//	@Override
+//	public void updateStudent(Student student, Long id) {
+//		studentRepository.update(student, id);
+//		
+//	}
 
 }

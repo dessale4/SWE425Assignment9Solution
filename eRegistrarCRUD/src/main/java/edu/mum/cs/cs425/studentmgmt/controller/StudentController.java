@@ -9,9 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.mum.cs.cs425.studentmgmt.model.Student;
@@ -54,9 +57,9 @@ public class StudentController {
 		
 		return "student/edit";
 	}
-	@PostMapping("/edit/{id}")
-	public String updateStudent(@PathVariable("id") Long id, Student student, Model model) {
-		
+	@PutMapping("/edit/{id}")
+	public String updateStudent(@PathVariable("id") Long id, @Valid @ModelAttribute Student student, Model model) {
+		studentService.save(student);
 		return "redirect:/students";
 	}
 	@PostMapping("/delete/{id}")

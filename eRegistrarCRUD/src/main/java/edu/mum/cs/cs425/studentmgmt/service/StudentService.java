@@ -10,5 +10,5 @@ public interface StudentService {
 	public List<Student>findAll();
 	public void delete(Long id);
 	public Student getStudent(Long id);
-	public void updateStudent(Student student, Long id);
+//	public void updateStudent(Student student, Long id);
 }
